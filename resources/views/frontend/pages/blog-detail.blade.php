@@ -32,7 +32,7 @@
                                     <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                 </div>
                                 <div class="blog-detail">
-                                    <h2 class="blog-title">{{$post->title}}</h2>
+                                    <h2 class="blog-title">{{$post->title ?? ''}}</h2>
                                     <div class="blog-meta">
                                         <span class="author"><a href="javascript:void(0);"><i class="fa fa-user"></i>By {{$post->author_info['name']}}</a><a href="javascript:void(0);"><i class="fa fa-calendar"></i>{{$post->created_at->format('M d, Y')}}</a><a href="javascript:void(0);"><i class="fa fa-comments"></i>Comment ({{$post->allComments->count()}})</a></span>
                                     </div>
@@ -139,7 +139,7 @@
                             <ul class="categor-list">
                                 {{-- {{count(Helper::postCategoryList())}} --}}
                                 @foreach(Helper::postCategoryList('posts') as $cat)
-                                <li><a href="#">{{$cat->title}} </a></li>
+                                <li><a href="#">{{$cat->title ?? ''}} </a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -154,7 +154,7 @@
                                         <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                     </div>
                                     <div class="content">
-                                        <h5><a href="#">{{$post->title}}</a></h5>
+                                        <h5><a href="#">{{$post->title ?? ''}}</a></h5>
                                         <ul class="comment">
                                             <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$post->created_at->format('d M, y')}}</li>
                                             <li><i class="fa fa-user" aria-hidden="true"></i>
@@ -174,7 +174,7 @@
                             <h3 class="title">Tags</h3>
                             <ul class="tag">
                                 @foreach(Helper::postTagList('posts') as $tag)
-                                    <li><a href="">{{$tag->title}}</a></li>
+                                    <li><a href="">{{$tag->title ?? ''}}</a></li>
                                 @endforeach
                             </ul>
                         </div>

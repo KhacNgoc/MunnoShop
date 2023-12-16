@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Blog Page')
+@section('title','Munno Keycap || Blog Page')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -39,7 +39,7 @@
                                                  {{$post->author_info->name ?? 'Anonymous'}}
                                             </span>
                                         </p>
-                                        <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title}}</a>
+                                        <a href="{{route('blog.detail',$post->slug)}}" class="title">{{$post->title ?? ''}}</a>
                                         <p>{!! html_entity_decode($post->summary) !!}</p>
                                         <a href="{{route('blog.detail',$post->slug)}}" class="more-btn">Continue Reading</a>
                                     </div>
@@ -78,7 +78,7 @@
                                     {{-- {{count(Helper::postCategoryList())}} --}}
                                     @foreach(Helper::postCategoryList('posts') as $cat)
                                     <li>
-                                        <a href="{{route('blog.category',$cat->slug)}}">{{$cat->title}} </a>
+                                        <a href="{{route('blog.category',$cat->slug)}}">{{$cat->title ?? ''}} </a>
                                     </li>
                                     @endforeach
                                 </form>
@@ -96,7 +96,7 @@
                                         <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                     </div>
                                     <div class="content">
-                                        <h5><a href="#">{{$post->title}}</a></h5>
+                                        <h5><a href="#">{{$post->title ?? ''}}</a></h5>
                                         <ul class="comment">
                                             <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$post->created_at->format('d M, y')}}</li>
                                             <li><i class="fa fa-user" aria-hidden="true"></i>
@@ -125,7 +125,7 @@
                                     @foreach(Helper::postTagList('posts') as $tag)
                                         <li>
                                             <li>
-                                                <a href="{{route('blog.tag',$tag->title)}}">{{$tag->title}} </a>
+                                                <a href="{{route('blog.tag',$tag->title ?? '')}}">{{$tag->title ?? ''}} </a>
                                             </li>
                                         </li>
                                     @endforeach

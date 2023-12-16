@@ -60,7 +60,7 @@
               @endphp
                 <tr>
                     <td>{{$product->id}}</td>
-                    <td>{{$product->title}}</td>
+                    <td>{{$product->title ?? ''}}</td>
                     <td>{{$product->cat_info['title']}}
                       <sub>
                           {{$product->sub_cat_info->title ?? ''}}
@@ -71,7 +71,7 @@
                     <td>  {{$product->discount}}% OFF</td>
                     <td>{{$product->size}}</td>
                     <td>{{$product->condition}}</td>
-                    <td> {{ucfirst($product->brand->title)}}</td>
+                    <td> {{ucfirst($product->brand->title ?? '')}}</td>
                     <td>
                       @if($product->stock>0)
                       <span class="badge badge-primary">{{$product->stock}}</span>

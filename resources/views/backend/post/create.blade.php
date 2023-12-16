@@ -44,7 +44,7 @@
           <select name="post_cat_id" class="form-control">
               <option value="">--Select any category--</option>
               @foreach($categories as $key=>$data)
-                  <option value='{{$data->id}}'>{{$data->title}}</option>
+                  <option value='{{$data->id ?? ''}}'>{{$data->title ?? ''}}</option>
               @endforeach
           </select>
         </div>
@@ -54,7 +54,7 @@
           <select name="tags[]" multiple  data-live-search="true" class="form-control selectpicker">
               <option value="">--Select any tag--</option>
               @foreach($tags as $key=>$data)
-                  <option value='{{$data->title}}'>{{$data->title}}</option>
+                  <option value='{{$data->title ?? ''}}'>{{$data->title ?? ''}}</option>
               @endforeach
           </select>
         </div>
@@ -82,7 +82,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">

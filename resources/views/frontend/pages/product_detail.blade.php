@@ -10,11 +10,11 @@
 	<meta name="description" content="{{$product_detail->summary}}">
 	<meta property="og:url" content="{{route('product-detail',$product_detail->slug)}}">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="{{$product_detail->title}}">
+	<meta property="og:title" content="{{$product_detail->title ?? ''}}">
 	<meta property="og:image" content="{{$product_detail->photo}}">
 	<meta property="og:description" content="{{$product_detail->description}}">
 @endsection
-@section('title','E-SHOP || PRODUCT DETAIL')
+@section('title','Munno Keycap || PRODUCT DETAIL')
 @section('main-content')
 
 		<!-- Breadcrumbs -->
@@ -65,7 +65,7 @@
 										<div class="product-des">
 											<!-- Description -->
 											<div class="short">
-												<h4>{{$product_detail->title}}</h4>
+												<h4>{{$product_detail->title ?? ''}}</h4>
 												<div class="rating-main">
 													<ul class="rating">
 														@php
@@ -84,7 +84,7 @@
                                                 @php
                                                     $after_discount=($product_detail->price-(($product_detail->price*$product_detail->discount)/100));
                                                 @endphp
-												<p class="price"><span class="discount">${{number_format($after_discount,2)}}</span><s>${{number_format($product_detail->price,2)}}</s> </p>
+												<p class="price"><span class="discount">{{number_format($after_discount)}} VND</span><s>{{number_format($product_detail->price)}} VND</s> </p>
 												<p class="description">{!!($product_detail->summary)!!}</p>
 											</div>
 											<!--/ End Description -->
@@ -342,13 +342,13 @@
 {{--                                        </div>--}}
                                     </div>
                                     <div class="product-content">
-                                        <h3><a href="{{route('product-detail',$data->slug)}}">{{$data->title}}</a></h3>
+                                        <h3><a href="{{route('product-detail',$data->slug)}}">{{$data->title ?? ''}}</a></h3>
                                         <div class="product-price">
                                             @php
                                                 $after_discount=($data->price-(($data->discount*$data->price)/100));
                                             @endphp
-                                            <span class="old">${{number_format($data->price,2)}}</span>
-                                            <span>${{number_format($after_discount,2)}}</span>
+                                            <span class="old">{{number_format($data->price)}} VND</span>
+                                            <span>{{number_format($after_discount)}} VND</span>
                                         </div>
 
                                     </div>

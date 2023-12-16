@@ -25,7 +25,7 @@
 
         <div class="form-group">
           <label for="is_parent">Is Parent</label><br>
-          <input type="checkbox" name='is_parent' id='is_parent' value='1' checked> Yes                        
+          <input type="checkbox" name='is_parent' id='is_parent' value='1' checked> Yes
         </div>
         {{-- {{$parent_cats}} --}}
 
@@ -34,7 +34,7 @@
           <select name="parent_id" class="form-control">
               <option value="">--Select any category--</option>
               @foreach($parent_cats as $key=>$parent_cat)
-                  <option value='{{$parent_cat->id}}'>{{$parent_cat->title}}</option>
+                  <option value='{{$parent_cat->id}}'>{{$parent_cat->title ?? ''}}</option>
               @endforeach
           </select>
         </div>
@@ -55,7 +55,7 @@
           <span class="text-danger">{{$message}}</span>
           @enderror
         </div>
-        
+
         <div class="form-group">
           <label for="status" class="col-form-label">Status <span class="text-danger">*</span></label>
           <select name="status" class="form-control">
