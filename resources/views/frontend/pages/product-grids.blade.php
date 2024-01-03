@@ -206,8 +206,16 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-md-12 justify-content-center d-flex">
-                                {{$products->appends($_GET)->links()}}
+                            <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+                                <a href="{{$products->appends($_GET)->previousPageUrl()}}">
+                                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                </a>
+                                @for($i=1;$i<=$products->appends($_GET)->lastPage();$i++)
+                                    <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$products->appends($_GET)->url($i)}}">{{$i}}</a>
+                                @endfor
+                                <a href="{{$products->appends($_GET)->nextPageUrl()}}">
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                </a>
                             </div>
                           </div>
 

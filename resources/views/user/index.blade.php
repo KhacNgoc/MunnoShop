@@ -155,7 +155,17 @@
           </tbody>
         </table>
 
-        {{$orders->links()}}
+          <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+              <a href="{{$orders->previousPageUrl()}}">
+                  <i class="fa fa-chevron-left" aria-hidden="true"></i>
+              </a>
+              @for($i=1;$i<=$orders->lastPage();$i++)
+                  <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$orders->url($i)}}">{{$i}}</a>
+              @endfor
+              <a href="{{$orders->nextPageUrl()}}">
+                  <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </a>
+          </div>
       </div>
     </div>
 

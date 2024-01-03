@@ -30,7 +30,7 @@
           <td>
             <a href="{{route('message.show',$message->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="view" data-placement="bottom"><i class="fas fa-eye"></i></a>
             <form method="POST" action="{{route('message.destroy',[$message->id])}}">
-              @csrf 
+              @csrf
               @method('delete')
                   <button class="btn btn-danger btn-sm dltBtn" data-id={{$message->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
             </form>
@@ -41,7 +41,17 @@
       </tbody>
     </table>
     <nav class="blog-pagination justify-content-center d-flex">
-      {{$messages->links()}}
+        <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+            <a href="{{$messages->previousPageUrl()}}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+            @for($i=1;$i<=$messages->lastPage();$i++)
+                <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$messages->url($i)}}">{{$i}}</a>
+            @endfor
+            <a href="{{$messages->nextPageUrl()}}">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        </div>
     </nav>
     @else
       <h2>Messages Empty!</h2>
@@ -73,7 +83,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#message-dataTable').DataTable( {
             "columnDefs":[
                 {
@@ -86,7 +96,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>

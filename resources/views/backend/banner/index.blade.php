@@ -88,7 +88,19 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$banners->links()}}</span>
+        <span style="float:right">
+            <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+                <a href="{{$banners->previousPageUrl()}}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                @for($i=1;$i<=$banners->lastPage();$i++)
+                    <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$banners->url($i)}}">{{$i}}</a>
+                @endfor
+                <a href="{{$banners->nextPageUrl()}}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </span>
         @else
           <h6 class="text-center">No banners found!!! Please create banner</h6>
         @endif

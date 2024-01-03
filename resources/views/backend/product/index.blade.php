@@ -61,7 +61,7 @@
                 <tr>
                     <td>{{$product->id}}</td>
                     <td>{{$product->title ?? ''}}</td>
-                    <td>{{$product->cat_info['title']}}
+                    <td>{{$product->cat_info['title'] ?? ''}}
                       <sub>
                           {{$product->sub_cat_info->title ?? ''}}
                       </sub>
@@ -109,7 +109,19 @@
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$products->links()}}</span>
+        <span style="float:right">
+            <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+                <a href="{{$products->previousPageUrl()}}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                @for($i=1;$i<=$products->lastPage();$i++)
+                    <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$products->url($i)}}">{{$i}}</a>
+                @endfor
+                <a href="{{$products->nextPageUrl()}}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </span>
         @else
           <h6 class="text-center">No Products found!!! Please create Product</h6>
         @endif

@@ -40,7 +40,7 @@
               </tr>
           </tfoot>
           <tbody>
-            @foreach($users as $user)   
+            @foreach($users as $user)
                 <tr>
                     <td>{{$user->id}}</td>
                     <td>{{$user->name}}</td>
@@ -64,7 +64,7 @@
                     <td>
                         <a href="{{route('users.edit',$user->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('users.destroy',[$user->id])}}">
-                      @csrf 
+                      @csrf
                       @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$user->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="modal-body">
                               <form method="post" action="{{ route('users.destroy',$user->id) }}">
-                                @csrf 
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger" style="margin:auto; text-align:center">Parmanent delete user</button>
                               </form>
@@ -89,11 +89,23 @@
                           </div>
                         </div>
                     </div> --}}
-                </tr>  
+                </tr>
             @endforeach
           </tbody>
         </table>
-        <span style="float:right">{{$users->links()}}</span>
+        <span style="float:right">
+            <div class="col-md-12 justify-content-between align-items-center d-flex mt-5">
+                <a href="{{$users->previousPageUrl()}}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                @for($i=1;$i<=$users->lastPage();$i++)
+                    <a style="background: #ebcda8;width: 25px;text-align: center;border-radius: 50%;" href="{{$users->url($i)}}">{{$i}}</a>
+                @endfor
+                <a href="{{$users->nextPageUrl()}}">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </span>
       </div>
     </div>
 </div>
@@ -119,7 +131,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#user-dataTable').DataTable( {
             "columnDefs":[
                 {
@@ -132,7 +144,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>
