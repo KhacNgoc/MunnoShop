@@ -277,7 +277,6 @@
                                     <div class="list-image overlay">
                                         @php
                                             $photo=explode(',',$product->photo);
-                                            // dd($photo);
                                         @endphp
                                         <img src="{{$photo[0]}}" alt="{{$photo[0]}}">
                                         <a href="{{route('product-detail',$product->slug)}}" class="buy"><i class="fa fa-shopping-bag"></i></a>
@@ -286,7 +285,7 @@
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
                                         <h4 class="title"><a href="#">{{$product->title ?? ''}}</a></h4>
-                                        <p class="price with-discount">{{number_format($product->discount)}} VND</p>
+                                        <p class="price with-discount">{{number_format($product->price)}} VND</p>
                                     </div>
                                 </div>
                                 </div>
