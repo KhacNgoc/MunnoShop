@@ -12,7 +12,7 @@
 
                             @endphp
                             <li><i class="ti-headphone-alt"></i>@foreach($settings as $data) {{$data->phone}} @endforeach</li>
-                            <li><i class="ti-email"></i> @foreach($settings as $data) {{$data->email}} @endforeach</li>
+                            {{-- <li><i class="ti-email"></i> @foreach($settings as $data) {{$data->email}} @endforeach</li> --}}
                         </ul>
                     </div>
                     <!--/ End Top Left -->
@@ -45,7 +45,7 @@
     <div class="middle-inner">
         <div class="container">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-12">
+                <div class="col-lg-2 col-md-2 col-12" style=" display: flex;justify-content: space-between;align-items: center;">
                     <!-- Logo -->
                     <div class="logo">
                         @php
@@ -55,19 +55,19 @@
                     </div>
                     <!--/ End Logo -->
                     <!-- Search Form -->
-                    <div class="search-top">
-                        <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <form class="search-form">
-                                <input type="text" placeholder="Search here..." name="search">
-                                <button value="search" type="submit"><i class="ti-search"></i></button>
-                            </form>
-                        </div>
-                        <!--/ End Search Form -->
-                    </div>
+{{--                    <div class="search-top">--}}
+{{--                        <div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>--}}
+{{--                        <!-- Search Form -->--}}
+{{--                        <div class="search-top">--}}
+{{--                            <form class="search-form">--}}
+{{--                                <input type="text" placeholder="Search here..." name="search">--}}
+{{--                                <button value="search" type="submit"><i class="ti-search"></i></button>--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                        <!--/ End Search Form -->--}}
+{{--                    </div>--}}
                     <!--/ End Search Form -->
-                    <div class="mobile-nav"></div>
+                    <div class="mobile-nav" style="margin-bottom: 15px;"></div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">

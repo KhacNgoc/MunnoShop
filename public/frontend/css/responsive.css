@@ -1185,6 +1185,7 @@ Version:1.0
 }
 .header.shop .logo {
 	margin: 0;
+	max-width: 50%;
 }
 .section{
 	padding:50px 0px;
